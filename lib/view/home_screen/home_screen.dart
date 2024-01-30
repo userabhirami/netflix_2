@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix/view/coming_soon_screen/coming_soon_screen.dart';
 import 'package:netflix/global_widgets/my_movieslist_builder.dart';
@@ -22,54 +23,67 @@ class HomeScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 415,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(
-                              ImageConstant.homescreen_containerimage),
-                          fit: BoxFit.cover)),
-                  child: SafeArea(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                CarouselSlider(
+                  items: [
+                    Container(
+                      height: 500,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                ImageConstant.homescreen_containerimage),
+                            fit: BoxFit.cover),
+                        color: const Color.fromARGB(255, 59, 251, 65),
+                      ),
+                    ),
+                  ],
+                  options: CarouselOptions(
+                      enlargeCenterPage:
+                          true, //center page pop chyth nikan so viewportfraction 0.somthing kodknm
+                      autoPlay: true,
+                      scrollDirection: Axis.horizontal,
+                      viewportFraction: .7),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 53,
-                              height: 57,
-                              child: Image.asset(ImageConstant.logoN),
-                            ),
-                            Expanded(
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    "TV Shows",
-                                    style:
-                                        toptab, //instead of down lines,v can use 1 term for all
-                                  ),
-                                  Text(
-                                    "Movies",
-                                    style: toptab,
-                                  ),
-                                  Text(
-                                    "MyList",
-                                    style: toptab,
-                                  ),
-                                ],
+                        SizedBox(
+                          width: 53,
+                          height: 57,
+                          child: Image.asset(ImageConstant.logoN),
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "TV Shows",
+                                style:
+                                    toptab, //instead of down lines,v can use 1 term for all
                               ),
-                            )
-                          ],
-                        ),
-                        Text(
-                          "#2 in Nigeria Today",
-                          style: TextStyle(color: ColorConstant.primaryWhite),
-                        ),
+                              Text(
+                                "Movies",
+                                style: toptab,
+                              ),
+                              Text(
+                                "MyList",
+                                style: toptab,
+                              ),
+                            ],
+                          ),
+                        )
                       ],
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 300),
+                      child: Text(
+                        "#2 in Nigeria Today",
+                        style: TextStyle(color: ColorConstant.primaryWhite),
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   height: 415,
